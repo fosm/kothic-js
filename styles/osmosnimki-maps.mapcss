@@ -1,24 +1,29 @@
 /*
-  Deja Vu MapCSS styles
-  Osmosnimki maps style
+translated from belarusian using google translate, sorry for any mistakes.
+у перакладзе з беларускай з дапамогай Google Translate.
+
+
+Deja Vu MapCSS styles
+   Osmosnimki maps style
+ Comments are separated and can occur anywhere you can put a space 
 */
 
-/* коментарии отделяются так и могут встречаться везде, где можно поставить пробел */
+canvas {fill-color: # C4D4F5}
 
-canvas {fill-color:  #C4D4F5}
 /*
-селектор, что рисовать.
+selector, which to draw.
 
-canvas - фон, считается одним большим полигоном, намного больше карты.
-    К нему можно применять свойства заливок.
-    Для mapnik'a нельзя выбирать разные параметры фона для разных зумов, и не поддерживаются иные параметры, кроме цвета
+canvas - the background is a great training ground, a lot more cards.
+     Harrowing can be used to fill the property.
+     For mapnik'a can choose different settings for different background zooms, and other options are not supported, except for the color
 
-node - точка.
-way - путь. выбирает одновременно все границы полигонов и все линейные объекты
-line - линейные объекты (обычно - незамкнутые пути, обычно к ним неприменима заливка)
-area - площадные объекты (обычно - замкнутые пути, применимы как заливки, так и линии контуров)
+node - the point.
+way - way to go. chooses simultaneously all the boundaries of polygons, and all the conservation sites
+line - conservation of objects (usually - not closed Putila generally inapplicable fill)
+area - areal objects (normally - closed Putila, applies to both fill and line contours)
 
- */
+  */
+
 
 area[natural=coastline] {fill-color: #fcf8e4;-x-mapnik-layer: bottom}
 
@@ -36,29 +41,29 @@ area|z10-[place=hamlet],
 area|z10-[place=village],
 area|z10-[place=locality]
 /*
-квадратные скобки после объекта - селектор по тегам.
-основные варианты:
-тег=значение
-тег!=значение - выбрать все, кроме тег=значение
-тег - тег присутствует, значение не важно
+square brackets after the objects - the tag selector.
+basic options:
+tag = value
+tag! = Value - select everything except the tag = value
+tag - a tag is present, the value is not important
 
   */
        {fill-color:#f3eceb; fill-opacity: 0.6; z-index:1}
 /*
-z-index - порядковый номер слоя, в котором будет лежать объект.
-чем меньше, тем ниже будет находиться объект (другие будут перекрывать)
+z-index - the ordinal number of the layer, which will be based on objects.
+Less is more effective than below will be of interest (others will overlap)
 
-магия: на развязках обводки будут учитывать слои эстакад.
-Если нужно принудительно положить линию поверх всех дорог:
--x-mapnik-layer: top;
-(к примеру, использовалось для рисования разделительных полос на primary )
+Magic: the stroke at interchanges will take into account the layers of flyovers.
+If you want to force to put a line on top of all roads:
+-X-mapnik-layer: top;
+(for example, used to draw dividing lines on the primary)
 
-Если (вдруг) понадобится принудительно положить линию под все дороги (фон):
--x-mapnik-layer: bottom;
-
+If (sudden) need to force to put a line under all of the road (background):
+-X-mapnik-layer: bottom;
+of
  */
 
-/* fill-color: - html-цвет заливки */
+/* fill-color: - html-fill color */
 
 area|z10-[landuse=residential], area|z10-[residential=urban]
 {fill-color:#F7EFEB; z-index:2}
@@ -75,7 +80,7 @@ area|z10-15[landuse=orchard]
        {fill-color:#edf2c1; z-index:3}
 
 area|z10-[leisure=park] {fill-color: #c4e9a4; z-index:3;fill-image:parks2.png}
-/* fill-image: картинка, которой надо заполнить полигон  */
+/* fill-image: picture, which should fill a polygon */
 
 
 area|z16-[leisure=garden],
@@ -96,10 +101,10 @@ area|z4-[natural=desert] {fill-image: desert22.png}
 
 
 /*
-после селектора типа объекта можно опционально ограничить зумы:
-|zA-B, A < B
-если нам не нужна какая-то из границ ("от минимального зума до такого-то"
-либо "от такого-то до бесконечности") - число A или B можно опустить.
+when the selector type objects can optionally limit Zoom:
+| ZA-B, A <B
+If we do not need any of the boundaries ("the minimum Zoom to such and such"
+something "on such and such to infinity") - the number of A or B can be omitted.
 */
 
 
@@ -163,14 +168,14 @@ area|z10-[landuse=reservoir],
 
 area|z9-[natural=water]{text:name; text-offset:1; font-size:10; font-family: DejaVu Serif Italic; text-color:#285fd1; text-allow-overlap: false;text-halo-radius: 1; text-halo-color: #ffffff; }
 /*
-text - из какого поля брать текст
-text-offset - на сколько сдвинуть текст
-font-size - размер шрифта
-font-family - название шрифта
-text-color - цвет шрифта
-text-allow-overlap - разрешить этим надписям перекрывать другие
-text-halo-radius - радиус обводки у текста. ограничение mapnik'a - только в целых значениях пикселей
-text-halo-color - цвет обводки текста
+text - from which to take the text field
+text-offset - how much to move the text
+font-size - font size
+font-family - the name of the font
+text-color - the color of fonts
+text-allow-overlap - to resolve this overlap other Inscriptions
+text-halo-radius - Radius of stroke in the text. limit mapnik'a - only integer values ​​of the pixels
+text-halo-color - color of text stroke
 */
 
 
@@ -186,8 +191,8 @@ casing-width:0.5; casing-color:#996703;
 width:3; color: #ffffff; z-index:10; dashes:9,9}
 
 /*
-dashes - пунктир (длины сегментов включенных и отключенных)
-возможно, кроме этого потребуется сменить linecap c round на butt
+dashes - the dotted line (the length of segments of active and inactive)
+may also need to change this linecap c round on the butt
 */
 
 
@@ -206,8 +211,8 @@ casing-width:.3; casing-color:#ffffff;
 width:3; color: #bf96ce; z-index:10; dashes:1,1; linecap:butt;}
 
 /*
-для отрисовки лестницы используется широкая линия с частым пунктиром, создающая впечатление перпендикулярных линий "ступенек".
-linecap:butt требуется для того, чтобы сегменты не "слипались" в одну линию.
+ladder is used to draw a broad line with frequent dotted line, creating the impression perpendicular to the line of "steps".
+linecap: butt is required for the run segment does not "stick together" in one line.
 */
 
 
@@ -375,8 +380,7 @@ way|z18[highway=tertiary_link]
 
 /*
 
-на данный момент конвертер не умеет каскадировать стили, поэтому каждый раз на каждую выбранную линию приходится писать все свойства.
-
+at this time converter is not able to cascade styles, so each time for each line of the election have to write all of the properties.
 */
 
 
@@ -579,12 +583,11 @@ way|z13-[highway=primary_link]::centerline,
 
 /*
 
-для линий можно определять subpart'ы и рисовать одну линию несколько раз _даже после появления каскадинга_ (иначе сходные правила будут объединен в одно с затиранием некоторых свойств)
+for the line can be determined subparty and draw a line a few times after the onset of _dazhe kaskadinga_ (otherwise similar rules will be merged into one with mashing a certain property)
 
-::subpart_name
+:: Subpart_name
 
-в данном примере для одной линии (например, highway=trunk) рисуется две линии: широкая жёлтая с обводкой (см. выше, без subpart) и тонкая красная по центру (с subpart centerline), рисуемая поверх всех жёлтых, даже если на развязках они должны уходить под низ.
-
+in this example for a single line (eg, highway = trunk) draw two lines: Broad yellow with stroke (cf. above, no subpart), and thin red center (with subpart centerline), drawn on top of yellow, even if they are interchange It should go under the bottom.
 
 
 */
@@ -593,10 +596,9 @@ way|z17-[oneway=yes]{line-style:arrows;z-index:15; -x-mapnik-layer: top;}
 
 /*
 
-line-style - заливка линии картинкой.
+line-style - Fill line images.
 
-arrows - специальное значение для синих стрелочек, рисуемых в векторе
-
+arrows - a special value for the blue arrows, drawn on Vector
 */
 
 
@@ -618,9 +620,9 @@ line|z9-[railway=rail]::ticks
 
 
 /*
-железная дорога рисуется в две линии:
- - цельная широкая чёрная линия (фон)
- - белый тонкий пунктир поверх нее
+Railways drawn in two lines:
+  - Wide calf black line (background)
+  - White thin dotted line on top of it
 
 */
 
@@ -693,7 +695,7 @@ area|z4-[boundary=administrative][admin_level=3]
 {width: 1.3; color: #ff99cc; opacity:0.5; z-index:16}
 
 /*
-для линии обводки отключены штриховки (casing-dashes:;), но включены для основной линии
+for the line stroke off the hatch (casing-dashes: ;), but is included for the main line
 
 */
 
